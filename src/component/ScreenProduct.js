@@ -41,20 +41,25 @@ const productsArr = [
     
     }
     
-    ]
+    ];
     
     
-const ScreenProduct = () => {
+const ScreenProduct = (props) => {
 
+   
 return(
-  productsArr.map((items) => (
+  <div>
+    <button onClick={props.onShowCart}> Cart</button>
+  {productsArr.map((items) => (
     <div key={items.imageUrl}>
       <h2>{items.title}</h2>
      
       <img src={items.imageUrl} />
       <h3>${items.price}</h3>
     </div>  
-  ))
-)
-}
+  ))}
+
+</div>
+);
+};
 export default ScreenProduct;
