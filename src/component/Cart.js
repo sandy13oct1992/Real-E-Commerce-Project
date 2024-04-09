@@ -1,7 +1,8 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import ReactDOM from "react-dom";
 import './Cart.css';
 import React from "react";
+import CartContext from "../store/CartContext";
 const cartElements = [
 
     {
@@ -44,21 +45,34 @@ const cartElements = [
     
     
 const Cart =(props) => {
+    const {Data} = useContext(CartContext);
+
+  
+
+    
+       
+    
+
+    console.log(Data);
+    
+let quantity = Data.length;
+
+
 
 return ReactDOM.createPortal(
 <>
   <div className="CContainer">
     <div className="Cart-Box">
     <button onClick={props.onClose}>X</button>
-    <label>Sandeep</label>
+    <label>qauntity: {quantity}</label>
     <input type="text" />
-    {cartElements.map((ele) => (
+    {Data.map((ele) => (
     <div key={ele.title}>
         <li>{ele.title}</li>
         <ul>{ele.imageUrl}</ul>
         <ul>{ele.price}
         </ul>
-        <ul>{ele.price}</ul>
+        
     </div>
 ))}
     
