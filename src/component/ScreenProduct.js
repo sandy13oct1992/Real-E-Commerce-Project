@@ -2,6 +2,8 @@ import CartContext from "../store/CartContext";
 import { useContext } from "react";
 // import ScreenToCartProvider from "./ScreenToCartProvider";
 import Card from "./Card";
+import CartIcon from "./CartIcon";
+import Cartbutton from "./Cartbutton";
 
 const productsArr = [
 
@@ -61,7 +63,9 @@ const ScreenProduct = (props) => {
 
 return(
   <div>
-    <button onClick={props.onShowCart}> Cart{Totalitem}</button>
+    <Cartbutton onShow={props.onShowCart}/> 
+    
+    
    {productsArr.map((items) => (
     <div key={items.imageUrl}>
       <h2>{items.title}</h2>
