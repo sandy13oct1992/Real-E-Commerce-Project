@@ -1,5 +1,5 @@
 import CartContext from "../store/CartContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 // import ScreenToCartProvider from "./ScreenToCartProvider";
 import Card from "./Card";
 import CartIcon from "./CartIcon";
@@ -54,18 +54,33 @@ const ScreenProduct = (props) => {
   const {submitCartHandler} = useContext(CartContext);
  
   const {Data} = useContext(CartContext);
+
+  const {FormData} = useContext(CartContext);
+   
+  // const [fData, setFData]=useState();
+   
+  // useEffect(()=>{
+  //   setFData([...fData, FormData]);
+  // },[FormData,Data,submitCartHandler]);
   
    let Totalitem=Data.length;
+   
 
   const addToCartHandler = (item) => {
     submitCartHandler(item);
    }
-
+  
+   console.log(FormData);
 return(
   <div>
     <Cartbutton onShow={props.onShowCart}/> 
-    
-    
+    {FormData.map((fd) => (
+     <div key={fd.id}>
+      <h3>{fd.releaseDate}</h3>
+      <h3>{fd.title}</h3>
+      <h3>{fd.openingText}</h3></div>
+    ))}
+      
    {productsArr.map((items) => (
     <div key={items.imageUrl}>
       <h2>{items.title}</h2>

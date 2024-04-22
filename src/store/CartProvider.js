@@ -1,9 +1,9 @@
 import CartContext from "./CartContext";
-import { useState} from "react";
+import { useState,useEffect} from "react";
 
 const CartProvider = (props) => {
     const [Data, setData] =useState('');
-    // const [price, setPrice] =useState('');
+    const [FormData, setFormData] =useState([]);
     // const [imgUrl, setImgUrl]=useState('');
     const submitCartHandler =(data) =>{
        setData((previousData) => {
@@ -12,11 +12,23 @@ const CartProvider = (props) => {
         )
        })
     }
-  console.log(Data);
+    // const [fData, setFData]=useState('');
+   const formShowHandler = (formData) => {
+    setFormData((pfData) => {
+        return(
+            [...pfData, formData]
+        )
+    })
+   }
+  
+    // setFData([...fData, FormData]);
+  
+  
+  console.log(FormData);
  
     return(
         <>
-        <CartContext.Provider value={{Data, submitCartHandler}}>{props.children}</CartContext.Provider>
+        <CartContext.Provider value={{Data, formShowHandler,submitCartHandler,FormData,setFormData}}>{props.children}</CartContext.Provider>
         </>
     )
 }

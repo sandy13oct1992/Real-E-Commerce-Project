@@ -4,9 +4,11 @@ import Cart from "./Cart";
 
 const ShowCart = () => {
 const [isShowCart, setShowCart]=useState(false);
+const [isLoading, setIsLoading]=useState(false)
 
   const showCartHandler = () => {
     setShowCart(true);
+    setIsLoading(true);
   }
 
   const hideCartHandler = () => {
@@ -18,7 +20,9 @@ const [isShowCart, setShowCart]=useState(false);
     
     {/* <RouterProvider router={router} /> */}
       <ScreenProduct onShowCart={showCartHandler} />
+      {isLoading && <p>Loading.....</p>}
       {isShowCart && <Cart onClose= {hideCartHandler}/>}
+      
        </div>
     
      
