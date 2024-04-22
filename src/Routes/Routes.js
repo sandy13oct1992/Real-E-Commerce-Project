@@ -3,12 +3,14 @@ import Home from "../page.js/Home";
 import About from "../page.js/About";
 import ScreenProduct from "../component/ScreenProduct";
 import ShowCart from "../component/ShowCart";
+import ContactUs from "../component/ContactUs";
 const Myroutes = () => {
 return(
     <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/About' element={<About/>}/>
         <Route path='/Screen' element={<ShowCart/>}/>
+        <Route path='/Contact' element={<ContactUs/>}/>
 
 
     
