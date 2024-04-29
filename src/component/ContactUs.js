@@ -4,6 +4,8 @@ const ContactUs = () => {
     const [email, setEmail]=useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
 
+    const [isLoading,setIsLoading] =useState(false);
+
     const nameChangeHandler = (e) => {
       setName(e.target.value);
     }
@@ -18,6 +20,7 @@ const ContactUs = () => {
 
     const  submitHandler =(e) => {
         e.preventDefault();
+        setIsLoading(true);
         const movieobj = {
             name:name,
             email:email,
@@ -29,7 +32,10 @@ const ContactUs = () => {
     {
         method: 'POST',
         body:JSON.stringify(movieobj)
-    });
+    }).then((res) => {
+        setIsLoading(false)
+    }
+    );
     }
 
     return(
@@ -40,7 +46,8 @@ const ContactUs = () => {
             <input type = 'text'value={email} onChange={emailChangeHandler}/>
             <label>Phone Number</label>
             <input type = 'Number'value={phoneNumber} onChange={numberChangeHandler}/>
-            <button onClick={submitHandler}>submit Store</button>
+            {!isLoading && <button onClick={submitHandler}>submit Store</button>}
+            {isLoading && <p>Loading.....</p>}
         </div>
     )
 } 
