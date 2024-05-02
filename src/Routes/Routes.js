@@ -4,6 +4,7 @@ import About from "../page.js/About";
 import ScreenProduct from "../component/ScreenProduct";
 import ShowCart from "../component/ShowCart";
 import ContactUs from "../component/ContactUs";
+import Authform from "../auth/Authform";
 const Myroutes = () => {
 return(
     <Routes>
@@ -11,6 +12,7 @@ return(
         <Route path='/About' element={<About/>}/>
         <Route path='/Screen' element={<ShowCart/>}/>
         <Route path='/Contact' element={<ContactUs/>}/>
+        <Route path='/LoginForm' element={<Authform/>}/>
 
 
     

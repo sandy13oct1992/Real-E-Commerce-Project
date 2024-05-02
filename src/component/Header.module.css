@@ -1,0 +1,28 @@
+/* Heading bar styles */
+.heading-bar {
+    background-color: #333; /* Background color */
+    color: #fff; /* Text color */
+    padding: 10px 20px; /* Padding */
+    display: flex; /* Flex display */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center items vertically */
+  }
+  
+  /* Heading text styles */
+  .heading-text {
+    font-size: 24px; /* Font size */
+    margin: 0; /* Remove default margin */
+  }
+  
+  /* Navigation link styles */
+  .nav-link {
+    color: #fff; /* Text color */
+    text-decoration: none; /* Remove underline */
+    margin-right: 20px; /* Margin between links */
+  }
+  
+  /* Navigation link hover styles */
+  .nav-link:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  

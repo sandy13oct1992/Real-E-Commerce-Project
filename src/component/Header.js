@@ -9,15 +9,20 @@ const Header = () => {
   // const authCtx = useContext(AuthContext);
   return (
     <>
-      {/* <Navbar
+      <Navbar
         expand="md"
         className="navbar-dark border-2 sticky-top border-bottom bg-dark text-white"
       >
         <Container className="justify-content-center">
-          <Nav className="gap-5"> */}
-            <NavLink to="/">
-              <h6>Home</h6>
+          <Nav className="gap-5">
+          
+            <NavLink to="/" className="nav-link">
+              <h6>Home</h6> 
             </NavLink>
+            <NavLink to="/LoginForm" className="nav-link">
+              <h6>Login form</h6> 
+            </NavLink>
+           
             {/* <NavLink to="/store">
               <h6>Store</h6>
             </NavLink> */}
@@ -58,6 +63,10 @@ const Header = () => {
           </h1>
         </Container>
       </div> */}
+      
+    </Nav>
+    </Container>
+    </Navbar>
     </>
   );
 };
