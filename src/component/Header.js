@@ -1,12 +1,20 @@
-// import { useContext } from "react";
+import { useContext } from "react";
 import { Navbar, Nav, Container, Button, Badge } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import CartContext from "../store/CartContext";
 // import CartContext from "../Store/cart-context";
 // import AuthContext from "../Store/auth-context";
 
 const Header = () => {
-  // const cartCtx = useContext(CartContext);
+  const cartCtx = useContext(CartContext);
   // const authCtx = useContext(AuthContext);
+
+  const isLogedIn = cartCtx.userIsLoggedIn;
+
+  const logouthandler = () => {
+    cartCtx.logOutHandler();
+  }
+
   return (
     <>
       <Navbar
@@ -16,26 +24,44 @@ const Header = () => {
         <Container className="justify-content-center">
           <Nav className="gap-5">
           
+            {isLogedIn && (
             <NavLink to="/" className="nav-link">
               <h6>Home</h6> 
             </NavLink>
+            )}
+            {!isLogedIn && (
             <NavLink to="/LoginForm" className="nav-link">
               <h6>Login form</h6> 
             </NavLink>
-           
+             )}   
             {/* <NavLink to="/store">
               <h6>Store</h6>
             </NavLink> */}
+            {isLogedIn && (
             <NavLink to="/about">
               <h6>About</h6>
             </NavLink>
-
+            )}
+            {isLogedIn && (
             <NavLink to="/Contact">
               <h6>Contact</h6>
              </NavLink>
+            )}
+            {isLogedIn && (
             <NavLink to="/Screen">
               <h6>Main Screen</h6>
             </NavLink>
+          )}
+          {/* {isLogedIn && (
+            <NavLink to="/UpdatePassword">
+              <button>UpdatePassword</button>
+            </NavLink>
+             )} */}
+          {isLogedIn && (
+            <li>
+              <button onClick={logouthandler}>logout</button>
+              </li>
+          )}
             {/* {!authCtx.isLogin && (
               <NavLink to="/login">
                 <h6>Login</h6>

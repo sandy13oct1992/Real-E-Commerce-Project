@@ -1,9 +1,12 @@
-import { useState, useRef } from "react"; 
+import { useState, useRef, useContext } from "react"; 
+import CartContext from "../store/CartContext";
 const Authform = () => {
     const emailInputRef = useRef();
     const passInputRef = useRef();
 
  const [isLogin, setIsLogin]=useState(true);
+
+ const authCtx = useContext(CartContext);
 
  const switchAuthModeHandler = () => {
    setIsLogin((prevState) => !prevState)
@@ -40,7 +43,9 @@ const Authform = () => {
             throw new Error(errorMessage);
         });
     }
- }).then((data) => {})
+ }).then((data) => {
+    authCtx.logInHandler(data.idToken);
+ })
  .catch((err) => {
     alert(err.message);
  })
