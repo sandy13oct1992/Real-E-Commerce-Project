@@ -6,12 +6,14 @@ const UpdatePassword = () => {
 
   const authCtx = useContext(CartContext);
 
+  const isLogedIn = authCtx.userIsLoggedIn;
+
   const submitHandler = (event) => {
    event.preventDefault();
 
    const enteredNewPassword = newPasswordInputRef.current.value;
      
-   fetch('https:https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyCYqSjodAfJhBFBQoalLAH7wm5RJn_nQ-U',
+   fetch('https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyCYqSjodAfJhBFBQoalLAH7wm5RJn_nQ-U',
     {
         method:'POST',
         body:JSON.stringify({
@@ -29,11 +31,11 @@ const UpdatePassword = () => {
     return(
         <form>
             <div>
-                <label>Password</label>
-                <input type ='password' id='new-password' minLength='7' ref={newPasswordInputRef}/>
+                <label>{isLogedIn && 'password'}</label>
+             {isLogedIn &&   (<input type ='password' id='new-password' minLength='7' ref={newPasswordInputRef}/>)}
             </div>
             <div>
-                <button onClick={submitHandler}>Change Password</button>
+                <button onClick={submitHandler}>{isLogedIn && 'Change Password'}</button>
             </div>
         </form>
     )

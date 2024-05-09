@@ -7,9 +7,10 @@ import CartContext from "../store/CartContext";
 
 const Header = () => {
   const cartCtx = useContext(CartContext);
-  // const authCtx = useContext(AuthContext);
+  
+  const isLogedIn = cartCtx.userIsLoggedIn;// const authCtx = useContext(AuthContext);
 
-  const isLogedIn = cartCtx.userIsLoggedIn;
+ 
 
   const logouthandler = () => {
     cartCtx.logOutHandler();
@@ -52,11 +53,11 @@ const Header = () => {
               <h6>Main Screen</h6>
             </NavLink>
           )}
-          {/* {isLogedIn && (
+          {isLogedIn && (
             <NavLink to="/UpdatePassword">
               <button>UpdatePassword</button>
             </NavLink>
-             )} */}
+             )}
           {isLogedIn && (
             <li>
               <button onClick={logouthandler}>logout</button>
