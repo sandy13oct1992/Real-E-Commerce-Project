@@ -19,7 +19,10 @@ const CartProvider = (props) => {
       setToken(null);
       localStorage.removeItem('token');
     }
-
+   
+    setTimeout(() => {
+      logOutHandler()
+    },50000);
     // const contextValue = {
     //     token:token,
     //     isLoggedIn:userIsLoggedIn,
