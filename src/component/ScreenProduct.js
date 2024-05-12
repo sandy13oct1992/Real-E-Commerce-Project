@@ -1,10 +1,10 @@
 import CartContext from "../store/CartContext";
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // import ScreenToCartProvider from "./ScreenToCartProvider";
 import Card from "./Card";
 import CartIcon from "./CartIcon";
 import Cartbutton from "./Cartbutton";
-
+import axios from 'axios';
 const productsArr = [
 
     {
@@ -64,10 +64,13 @@ const ScreenProduct = (props) => {
   // },[FormData,Data,submitCartHandler]);
   
    let Totalitem=Data.length;
-   
+  
 
-  const addToCartHandler = (item) => {
+  const addToCartHandler = async(item) => {
     submitCartHandler(item);
+     const response = await axios.post('https://react-http-6b09e-default-rtdb.firebaseio.com',
+      item
+     )
    }
   
    console.log(FormData);

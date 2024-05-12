@@ -29,9 +29,9 @@ const Movies =() => {
         <div>
          
             <button>Fetch Movie</button>
-        //   </section>
-        //   <MovieList movies = {DummyMovies}></MovieList>
+        
          </div>
+        
     
 } 
 export  default Movies;
