@@ -68,7 +68,7 @@ const ScreenProduct = (props) => {
 
   const addToCartHandler = async(item) => {
     submitCartHandler(item);
-     const response = await axios.post('https://react-http-6b09e-default-rtdb.firebaseio.com',
+     const response = await axios.post('https://react-http-6b09e-default-rtdb.firebaseio.com/cart',
       item
      )
    }
