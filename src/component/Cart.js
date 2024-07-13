@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import './Cart.css';
 import React from "react";
 import CartContext from "../store/CartContext";
+import Modal from "./Modal";
 const cartElements = [
 
     {
@@ -45,55 +46,55 @@ const cartElements = [
     
     
 const Cart =(props) => {
-   const [title, setTitle] = useState();
-   const [openingText, setOpeningText]=useState();
-   const [releaseDate, setReleaseDate] = useState();
+//    const [title, setTitle] = useState();
+//    const [openingText, setOpeningText]=useState();
+//    const [releaseDate, setReleaseDate] = useState();
 
     const {Data} = useContext(CartContext);
     const {formShowHandler} =useContext(CartContext);
 
-    const TitleChangeHandler = (e) => {
-        setTitle(e.target.value)
-    }
+//     const TitleChangeHandler = (e) => {
+//         setTitle(e.target.value)
+//     }
 
-    const OpeningTextHandler = (e) => {
-        setOpeningText(e.target.value)
-    }
+//     const OpeningTextHandler = (e) => {
+//         setOpeningText(e.target.value)
+//     }
 
-    const RDateChangeHandler = (e) => {
-        setReleaseDate(e.target.value)
-    }
+//     const RDateChangeHandler = (e) => {
+//         setReleaseDate(e.target.value)
+//     }
   
    
-    const submitFormHandler = (e) => {
-        e.preventDefault();
-        const obj={ 
-            title :title,
-            openingText:openingText,
-            releaseDate:releaseDate,
-            id:new Date().getTime(),
+//     const submitFormHandler = (e) => {
+//         e.preventDefault();
+//         const obj={ 
+//             title :title,
+//             openingText:openingText,
+//             releaseDate:releaseDate,
+//             id:new Date().getTime(),
     
-        }
-        formShowHandler(obj);
+//         }
+//         formShowHandler(obj);
 
-    }
+//     }
     
 let quantity = Data.length;
-
-return ReactDOM.createPortal(
-<>
-  <div className="CContainer">
-    <div className="Cart-Box">
-    <button onClick={props.onClose}>X</button>
-    {/* <form onSubmit=submit></form> */}
-    <label>Title</label><br/>
-    <input type="text" value={title} onChange={TitleChangeHandler} /><br/>
-    <label>Opening Text</label><br/>
-    <textarea id="paragraph" name="paragraph" rows="5" cols="50" value={openingText} onChange={OpeningTextHandler}></textarea><br/>
-    <label>Release Date</label><br/>
-    <input type="text" value={releaseDate} onChange={RDateChangeHandler}/><br/>
-    <label>qauntity: {quantity}</label>
-    <button onClick={submitFormHandler}>Add Form</button>
+// ReactDOM.createPortal
+return (
+<Modal>
+    {/* <div className="CContainer">
+        <div className="Cart-Box">
+        <button onClick={props.onClose}>X</button>
+        {/* <form onSubmit=submit></form> */}
+        {/* <label>Title</label><br/>
+        <input type="text" value={title} onChange={TitleChangeHandler} /><br/>
+        <label>Opening Text</label><br/>
+        <textarea id="paragraph" name="paragraph" rows="5" cols="50" value={openingText} onChange={OpeningTextHandler}></textarea><br/>
+        <label>Release Date</label><br/>
+        <input type="text" value={releaseDate} onChange={RDateChangeHandler}/><br/>
+        <label>qauntity: {quantity}</label>
+        <button onClick={submitFormHandler}>Add Form</button> */} 
 
     {Data.map((ele) => (
     <div key={ele.title}>
@@ -104,10 +105,7 @@ return ReactDOM.createPortal(
         
     </div>
 ))}
-    
-    </div>
-    </div>
-</>, document.getElementById("root1")
+</Modal>
 );
 
 };

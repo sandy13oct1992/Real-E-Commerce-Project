@@ -8,6 +8,8 @@ const CartProvider = (props) => {
     const initialToken = localStorage.getItem('token');
     const [token, setToken] = useState(initialToken);
 
+    const [emailr, setEmail] = useState('')
+
     const userIsLoggedIn = !!token;
 
     const logInHandler = (token) => {
@@ -30,6 +32,10 @@ const CartProvider = (props) => {
     //     logout: logOutHandler,
     // }
     // const [imgUrl, setImgUrl]=useState('');
+    const restoreCartHandler = (cartdata) => {
+      setData(cartdata)
+    }
+
     const submitCartHandler =(data) =>{
        setData((previousData) => {
         return(
@@ -53,7 +59,7 @@ const CartProvider = (props) => {
  
     return(
         <>
-        <CartContext.Provider value={{logInHandler,logOutHandler,token,setToken,userIsLoggedIn ,Data, formShowHandler,submitCartHandler,FormData,setFormData}}>{props.children}</CartContext.Provider>
+        <CartContext.Provider value={{emailr,setEmail,restoreCartHandler,logInHandler,logOutHandler,token,setToken,userIsLoggedIn ,Data, formShowHandler,submitCartHandler,FormData,setFormData,setData}}>{props.children}</CartContext.Provider>
         </>
     )
 }

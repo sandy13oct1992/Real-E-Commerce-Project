@@ -19,10 +19,10 @@ const Authform = () => {
   const passRef= passInputRef.current.value;
   let url;
   if(isLogin){
-
-  url='https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCYqSjodAfJhBFBQoalLAH7wm5RJn_nQ-U';
+    authCtx.setEmail(emailref);
+  url='https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyByjyq2al1UgTfogSSwWRxp4wLA2IBlUxc';
   }else{
-    url='https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCYqSjodAfJhBFBQoalLAH7wm5RJn_nQ-U';
+    url='https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyByjyq2al1UgTfogSSwWRxp4wLA2IBlUxc';
    }fetch(url, {
     method:'POST',
     body:JSON.stringify({

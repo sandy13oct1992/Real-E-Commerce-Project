@@ -5,6 +5,7 @@ import Card from "./Card";
 import CartIcon from "./CartIcon";
 import Cartbutton from "./Cartbutton";
 import axios from 'axios';
+import "./screenProduct.css";
 const productsArr = [
 
     {
@@ -51,28 +52,68 @@ const productsArr = [
     
     
 const ScreenProduct = (props) => {
-  const {submitCartHandler} = useContext(CartContext);
+  const {submitCartHandler, restoreCartHandler,emailr} = useContext(CartContext);
  
   const {Data} = useContext(CartContext);
 
   const {FormData} = useContext(CartContext);
    
+  const {setData} =useContext(CartContext);
   // const [fData, setFData]=useState();
    
   // useEffect(()=>{
   //   setFData([...fData, FormData]);
   // },[FormData,Data,submitCartHandler]);
+  // axios.get('https://react-http-6b09e-default-rtdb.firebaseio.com/cart.json')
+
+  // const isEmpty= !!setData;
+  const email = emailr;
+  const sanitizeEmail = (email) => {
+    return email.replace(/\./g, ',');
+  };
+
+  // const email = emailr; // Replace this with the actual email from props or context
+  const sanitizedEmail = sanitizeEmail(email);
+  
   
    let Totalitem=Data.length;
   
 
-  const addToCartHandler = async(item) => {
+  const addToCartHandler = async(item) =>{
     submitCartHandler(item);
-     const response = await axios.post('https://react-http-6b09e-default-rtdb.firebaseio.com/cart',
+     const response = await axios.post('https://e-commerce3-30722-default-rtdb.firebaseio.com/cart.json',
       item
      )
+    
    }
-  
+   const res=async() =>{ 
+    const resp2=  await axios.get('https://e-commerce3-30722-default-rtdb.firebaseio.com/cart.json')
+    let products =Object.values(resp2.data)
+    console.log(products,"from line no. 85");
+    const productsKeys =Object.keys(resp2.data)
+    console.log(productsKeys, "from line no. 87");
+
+    products=products.map((pdata,index) =>{
+      pdata.id = productsKeys[index];
+      return pdata;
+   })
+   console.log(products ,"updated cart data");
+    restoreCartHandler(products);
+  //   const resp3=await resp2.json();
+  console.log(resp2, "from line no. 88");
+  // }
+  // res();
+    }
+   useEffect(() =>{
+  //   const res=async() =>{ 
+  //   const resp2=  await axios.get('https://react-http-6b09e-default-rtdb.firebaseio.com/cart.json')
+  //   //  submitCartHandler(resp2)
+  //   const resp3=await resp2.json();
+  // console.log(resp3, "from line no. 82");
+  // // }
+  res();
+    // }
+},[])
    console.log(FormData);
 return(
   <div>
@@ -85,10 +126,10 @@ return(
     ))}
       
    {productsArr.map((items) => (
-    <div key={items.imageUrl}>
+    <div key={items.imageUrl} className="card">
       <h2>{items.title}</h2>
      
-      <img src={items.imageUrl} />
+      <img src={items.imageUrl} alt={items.title}/>
       <h3>${items.price}</h3>
       <button  onClick={() => {addToCartHandler(items)}}>Add to Cart</button>
     </div>  

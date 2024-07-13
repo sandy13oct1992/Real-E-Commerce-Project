@@ -25,28 +25,28 @@ const Header = () => {
         <Container className="justify-content-center">
           <Nav className="gap-5">
           
-            {isLogedIn && (
+            {/* {isLogedIn && (
             <NavLink to="/" className="nav-link">
               <h6>Home</h6> 
             </NavLink>
-            )}
+            )} */}
             {!isLogedIn && (
             <NavLink to="/LoginForm" className="nav-link">
               <h6>Login form</h6> 
             </NavLink>)}
 
-            {!isLogedIn && (
-            <NavLink to="/LoginForm" className="nav-link">
+            {isLogedIn && (
+            <NavLink to="/LoginForm">
              <h6>Home</h6> 
            </NavLink>)}   
             {/* <NavLink to="/store">
               <h6>Store</h6>
             </NavLink> */}
-            {!isLogedIn && (
+            {/* {isLogedIn && (
             <NavLink to="/LoginForm">
               <h6>About</h6>
-            </NavLink>
-            )}
+            </NavLink> */}
+            {/* )} */}
             {isLogedIn && (
             <NavLink to="/about">
               <h6>About</h6>
